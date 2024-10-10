@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>document</title>
+</head>
+<body>
+
+    <input type="text" id="inputField" placeholder="Enter Values">
+    <button id="splitButton">Click</button><br>
+    <div class="output" id="outputArea"></div>
+
+    <script>
+        document.getElementById('splitButton').addEventListener('click', function() {
+            const input = document.getElementById('inputField').value;
+            const outputArea = document.getElementById('outputArea');
+            outputArea.innerHTML = ''; 
+
+            const characters = input.split('');
+            const boxCount = 5;
+            const totalCharacters = characters.length;
+
+            const charsInFirstBox = Math.max(0, totalCharacters - (boxCount - 1));
+
+            const outputArrays = [];
+
+            let firstArray = [];
+            for (let i = 0; i < charsInFirstBox; i++) {
+                firstArray.push(characters[i]);
+            }
+            outputArrays.push(firstArray);
+
+            for (let i = charsInFirstBox; i < totalCharacters; i++) {
+                if (i - charsInFirstBox < boxCount - 1) { 
+                    outputArrays.push([characters[i]]);
+                }
+            }
+
+            for (let i = totalCharacters; i < boxCount; i++) {
+                outputArrays.push([]); 
+            }
+
+            outputArea.textContent = JSON.stringify(outputArrays);
+        });
+    </script>
+
+</body>
+</html>
