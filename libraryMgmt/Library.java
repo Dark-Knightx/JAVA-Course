@@ -39,7 +39,7 @@ public class Library {
         if (member != null && book != null) {
             member.returnBook(book);
             for (Transaction transaction : transactionList) {
-                if (transaction.book == book && transaction.member == member) {
+                if (transaction.getBook() == book && transaction.getMember() == member) {
                     transaction.completeReturn();
                 }
             }
@@ -67,7 +67,7 @@ public class Library {
 
     private Member findMember(int memberId) {
         for (Member member : memberList) {
-            if (memberId == member.memberId) { // Correctly accessing memberId
+            if (memberId == member.getMemberId()) { // Correctly accessing memberId
                 return member;
             }
         }
@@ -76,7 +76,7 @@ public class Library {
 
     private Book findBook(int bookId) {
         for (Book book : bookList) {
-            if (bookId == book.bookId) { // Correctly accessing bookId
+            if (bookId == book.getBookId()) { // Correctly accessing bookId
                 return book;
             }
         }

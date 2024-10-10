@@ -1,10 +1,10 @@
 package libraryMgmt;
 
 public class Book {
-    int bookId;
-    String title;
-    String author;
-    boolean isAvailable;
+    private int bookId;
+    private String title;
+    private String author;
+    private boolean isAvailable;
 
     public Book(int bookId, String title, String author) {
         this.bookId = bookId;
@@ -32,5 +32,18 @@ public class Book {
     public boolean isAvailable() {
         return isAvailable;
     }
+
+	public int getBookId() {
+		return bookId;
+	}
+
+	public void setBookId(int bookId) {
+		this.bookId = bookId;
+	}
+
+	public void setAvailable(boolean isAvailable) {
+		this.isAvailable = isAvailable;
+	}
+    
 }
 

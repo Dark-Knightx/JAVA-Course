@@ -3,8 +3,8 @@ package libraryMgmt;
 import java.util.ArrayList;
 
 public class Member {
-    int memberId;
-    String name;
+    private int memberId;
+    private String name;
     private ArrayList<Book> borrowedBooks;
 
     public Member(int memberId, String name) {
@@ -33,4 +33,22 @@ public class Member {
         book.returnBook();
         borrowedBooks.remove(book);
     }
+
+	public int getMemberId() {
+		return memberId;
+	}
+
+	public void setMemberId(int memberId) {
+		this.memberId = memberId;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+    
+    
 }
