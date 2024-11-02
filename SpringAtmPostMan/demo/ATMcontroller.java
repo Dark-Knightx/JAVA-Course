@@ -18,8 +18,13 @@ public class ATMcontroller {
 		atmService.addUser(user);
 	}
 	
-	@PostMapping("/deposit/{accountNo},{amount}")
+	@PutMapping("/deposit/{accountNo},{amount}")
 	public void deposit(@PathVariable int accountNo, @PathVariable int amount) {
 		atmService.deposit(accountNo,amount);
+	}
+
+	@PutMapping("/withdraw/{accountNo},{pin},{amount}")
+	public void withdraw(@PathVariable int accountNo,@PathVariable int pin, @PathVariable int amount) {
+		atmService.withdraw(accountNo,pin,amount);
 	}
 }
