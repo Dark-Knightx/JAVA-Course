@@ -1,5 +1,6 @@
+package com.example.demo.security;
 
-
+import com.example.demo.service.CustomUserDetailsService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -24,6 +25,7 @@ public class MyConfig {
                 .csrf(csrf -> csrf.disable())
                 .cors(cors -> cors.disable())
                 .authorizeHttpRequests(req -> req
+                        .requestMatchers("/register","/registerr", "/css/**", "/js/**").permitAll()
                         .requestMatchers("/user/*").hasRole("USER")
                         .requestMatchers("/admin/*").hasRole("ADMIN")
                         .anyRequest().authenticated()
