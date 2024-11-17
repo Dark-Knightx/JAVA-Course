@@ -8,6 +8,8 @@ import com.example.demo.modal.User;
 @Repository
 public interface UserRepo extends JpaRepository<User, Integer>{
 
-	User findByPanId(int panId);
+	User findByUsername(String username);
+
+    	User findByPanId(int panId);
 
 }
