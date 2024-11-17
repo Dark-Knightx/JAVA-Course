@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>User Dashboard</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+    <style>
+        .bg{
+            height: 92vh;
+            background-color: rgba(0, 0, 0, 0.544);
+            color: aliceblue;
+            padding: 5%;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">User Dashboard</a>
+    </nav>
+    <div class="container-fluid bg">
+        <div class="row">
+            <div class="col-6">
+                <form action="">
+                    <button type="submit" class="btn btn-info mt-3">Deposit</button>
+                </form>
+                <form action="">
+                    <button type="submit" class="btn btn-info mt-3">Withdraw</button>
+                </form>
+                <form action="">
+                    <button type="submit" class="btn btn-info mt-3">Transfer</button>
+                </form>
+            </div>
+            <div class="col-6">
+                <form action="">
+                    <button type="submit" class="btn btn-info mt-3">Balance Enquiry</button>
+                </form>
+                <form action="">
+                    <button type="submit" class="btn btn-info mt-3">Account Details</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
