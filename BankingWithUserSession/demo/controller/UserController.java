@@ -41,8 +41,7 @@ public class UserController {
 		return "userDetails";
 	}
 
-	private int getPanIdFromUsername(String username) {
-		// Mock logic to fetch panId from username; replace with actual logic if required.
-		return 12345; // Replace with actual lookup.
-	}
+	// private int getPanIdFromUsername(String username) {
+	// 	return 12345; 
+	// }
 }
