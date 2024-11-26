@@ -43,6 +43,18 @@ public class AdminController {
             model.addAttribute("mobileError", "Mobile Number Taken");
             hasErrors = true;
         }
+        if (customer.getDob() != null) {
+            LocalDate today = LocalDate.now();
+            Period age = Period.between(customer.getDob(), today);
+
+            if (age.getYears() < 18) {
+                model.addAttribute("dobError", "You must be at least 18 years old");
+                hasErrors = true;
+            }
+        } else {
+            model.addAttribute("dobError", "Date of Birth is required");
+            hasErrors = true;
+        }
 
         if (hasErrors) {
             return "register"; // Stay on the form page with error messages
