@@ -26,6 +26,14 @@
                     <label for="pan">PAN ID</label>
                     <input type="text" id="pan" th:field="*{pan}" class="form-control">
 
+                    <!-- Date of Birth Field -->
+                    <label for="dob">Date of Birth</label>
+                    <input type="date" id="dob" th:field="*{dob}" class="form-control"
+                           th:classappend="${dobError} != null ? 'is-invalid' : ''">
+                    <div class="invalid-feedback" th:if="${dobError != null}">
+                        <span th:text="${dobError}"></span>
+                    </div>
+
                     <!-- Mobile Field -->
                     <label for="mobile">Mobile No.</label>
                     <input type="text" id="mobile" th:field="*{mobile}" class="form-control"
