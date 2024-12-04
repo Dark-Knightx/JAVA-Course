@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Admin Dashboard</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f4f4f4;
+        }
+
+        h1, h2 {
+            font-family: Arial, sans-serif;
+        }
+
+        button {
+            background-color: #ff4d4d;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #cc0000;
+        }
+    </style>
+</head>
+<body>
+<h1>Admin Dashboard</h1>
+
+<!-- Users Section -->
+<h2>All Users</h2>
+<table>
+    <thead>
+    <tr>
+        <th>Username</th>
+        <th>Full Name</th>
+        <th>Email</th>
+        <th>Phone</th>
+        <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="user : ${users}">
+        <td th:text="${user.username}">N/A</td>
+        <td th:text="${user.firstName + ' ' + user.lastName}">N/A</td>
+        <td th:text="${user.email}">N/A</td>
+        <td th:text="${user.phoneNumber}">N/A</td>
+        <td>
+            <form th:action="@{/admin/user/delete/{id}(id=${user.id})}" method="post">
+                <button type="submit">Delete</button>
+            </form>
+        </td>
+    </tr>
+    <tr th:if="${#lists.isEmpty(users)}">
+        <td colspan="5" style="text-align:center;">No users found</td>
+    </tr>
+    </tbody>
+</table>
+
+<!-- Categories Section -->
+<h2>All Categories</h2>
+<table>
+    <thead>
+    <tr>
+        <th>Category Name</th>
+        <th>Status</th>
+        <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="category : ${categories}">
+        <td th:text="${category.name}">N/A</td>
+        <td th:text="${category.status ? 'Active' : 'Inactive'}">Inactive</td>
+        <td>
+            <form th:action="@{/admin/category/delete/{id}(id=${category.id})}" method="post">
+                <button type="submit">Delete</button>
+            </form>
+        </td>
+    </tr>
+    <tr th:if="${#lists.isEmpty(categories)}">
+        <td colspan="3" style="text-align:center;">No categories found</td>
+    </tr>
+    </tbody>
+</table>
+
+<!-- Transactions Section -->
+<h2>All Transactions</h2>
+<table>
+    <thead>
+    <tr>
+        <th>User</th>
+        <th>Amount</th>
+        <th>Type</th>
+        <th>Description</th>
+        <th>Category</th>
+        <th>Date</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="transaction : ${transactions}">
+        <td th:text="${transaction.user != null ? transaction.user.username : 'N/A'}">N/A</td>
+        <td th:text="${transaction.amount}">0.00</td>
+        <td th:text="${transaction.type}">N/A</td>
+        <td th:text="${transaction.description}">N/A</td>
+        <td th:text="${transaction.category != null ? transaction.category.name : 'Uncategorized'}">Uncategorized</td>
+        <td th:text="${transaction.date != null ? #dates.format(transaction.date, 'yyyy-MM-dd') : 'N/A'}">N/A</td>
+    </tr>
+    <tr th:if="${#lists.isEmpty(transactions)}">
+        <td colspan="6" style="text-align:center;">No transactions found</td>
+    </tr>
+    </tbody>
+</table>
+
+</body>
+</html>
