@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+<h1>Admin Dashboard</h1>
+
+<!-- Users Section -->
+<h2>All Users</h2>
+<table>
+    <thead>
+    <tr>
+        <th>Username</th>
+        <th>Full Name</th>
+        <th>Email</th>
+        <th>Phone</th>
+        <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="user : ${users}">
+        <td th:text="${user.username}"></td>
+        <td th:text="${user.firstName + ' ' + user.lastName}"></td>
+        <td th:text="${user.email}"></td>
+        <td th:text="${user.phoneNumber}"></td>
+        <td>
+            <form th:action="@{/admin/user/delete/{id}(id=${user.id})}" method="post">
+                <button type="submit">Delete</button>
+            </form>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+<!-- Categories Section -->
+<h2>All Categories</h2>
+<table>
+    <thead>
+    <tr>
+        <th>Category Name</th>
+        <th>Status</th>
+        <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="category : ${categories}">
+        <td th:text="${category.name}"></td>
+        <td th:text="${category.status ? 'Active' : 'Inactive'}"></td>
+        <td>
+            <form th:action="@{/admin/category/delete/{id}(id=${category.id})}" method="post">
+                <button type="submit">Delete</button>
+            </form>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+<!-- Transactions Section -->
+<h2>All Transactions</h2>
+<table>
+    <thead>
+    <tr>
+        <th>User</th>
+        <th>Amount</th>
+        <th>Type</th>
+        <th>Description</th>
+        <th>Category</th>
+        <th>Date</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="transaction : ${transactions}">
+        <td th:text="${transaction.user.username}"></td>
+        <td th:text="${transaction.amount}"></td>
+        <td th:text="${transaction.type}"></td>
+        <td th:text="${transaction.description}"></td>
+        <td th:text="${transaction.category.name}"></td>
+        <td th:text="${#dates.format(transaction.date, 'yyyy-MM-dd')}"></td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>
