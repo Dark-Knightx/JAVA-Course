@@ -30,10 +30,7 @@ public class CustomAuthenticationSuccessHandler implements AuthenticationSuccess
         logger.info("User logged in with authorities: {}", authorities);
 
         String pattern = request.getParameter("pattern");
-        String Username = request.getParameter("username");
-
-        User user = userRepository.findByUsername(Username)
-                .orElseThrow(() -> new UsernameNotFoundException("User not found"));
+        String CustomPattern = "12345";
 
             for (GrantedAuthority authority : authorities) {
                 if (authority.getAuthority().equals("ROLE_USER")) {
@@ -41,7 +38,7 @@ public class CustomAuthenticationSuccessHandler implements AuthenticationSuccess
                     return;
                 }
                 else if (authority.getAuthority().equals("ROLE_ADMIN")) {
-                    if (user.getPattern().equals(pattern)) {
+                    if (CustomPattern.equals(pattern)) {
                         response.sendRedirect("/admin/dashboard");
                         return;
                     }
