@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Register</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col-5">
+            <!-- Generate OTP Form -->
+            <form action="/admin/otp" method="post">
+                <label for="otp-email">Email</label>
+                <input type="email" id="otp-email" name="email" class="form-control" placeholder="Enter your email">
+                <button type="submit" class="btn btn-primary mt-2">Generate OTP</button>
+            </form>
+
+            <!-- Success/Error Messages -->
+            <div th:if="${otpError != null}" class="alert alert-danger mt-3" th:text="${otpError}"></div>
+            <div th:if="${otpSuccess != null}" class="alert alert-success mt-3" th:text="${otpSuccess}"></div>
+
+            <hr>
+
+            <!-- Registration Form -->
+            <form action="/admin/saveCustomer" method="post" th:object="${customer}">
+
+                <label for="email">Email</label>
+                <input type="text" id="email" th:field="*{email}" class="form-control">
+
+                <label for="username">Username</label>
+                <input type="text" id="username" th:field="*{username}" class="form-control">
+
+                <label for="otp">OTP</label>
+                <input type="text" id="otp" name="otp" class="form-control">
+
+                <label for="dob">Date of Birth</label>
+                <input type="date" id="dob" th:field="*{dob}" class="form-control">
+
+                <label for="mobile">Mobile No.</label>
+                <input type="text" id="mobile" th:field="*{mobile}" class="form-control">
+
+                <button type="submit" class="btn btn-dark mt-3">Submit</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+</body>
+</html>
