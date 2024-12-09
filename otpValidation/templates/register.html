@@ -12,7 +12,7 @@
             <!-- Generate OTP Form -->
             <form action="/admin/otp" method="post">
                 <label for="otp-email">Email</label>
-                <input type="email" id="otp-email" name="email" class="form-control" placeholder="Enter your email">
+                <input type="email" id="otp-email" th:value="${email}" name="email" class="form-control" placeholder="Enter your email">
                 <button type="submit" class="btn btn-primary mt-2">Generate OTP</button>
             </form>
 
@@ -25,8 +25,9 @@
             <!-- Registration Form -->
             <form action="/admin/saveCustomer" method="post" th:object="${customer}">
 
-                <label for="email">Email</label>
-                <input type="text" id="email" th:field="*{email}" class="form-control">
+<!--                <label for="email">Email</label>-->
+                <input type="hidden" id="email" th:value="${email}" name="email" class="form-control">
+
 
                 <label for="username">Username</label>
                 <input type="text" id="username" th:field="*{username}" class="form-control">
