@@ -46,6 +46,8 @@ public class AdminController {
         // Success message
         model.addAttribute("otpSuccess", "OTP sent to your email");
         model.addAttribute("customer", new Customer());
+        model.addAttribute("email",email);
+        model.addAttribute("otpClass",otPgenerator);
         return "register"; // Return to the same page with success message
     }
 
@@ -59,7 +61,7 @@ public class AdminController {
     @PostMapping("/saveCustomer")
     public String saveCustomer(
             @ModelAttribute("customer") Customer customer,
-            @RequestParam("otp") String otp,
+            @RequestParam("otp") String otp,@RequestParam String email,
             Model model) {
 
         boolean hasErrors = false;
@@ -89,11 +91,12 @@ public class AdminController {
                 hasErrors = true;
             }
         }
-
+        customer.setEmail(email);
         // Validate OTP
         OTPgenerator otpRecord = otpRepo.findByEmail(customer.getEmail());
         if (otpRecord == null || !otpRecord.getOtp().equals(otp)) {
             model.addAttribute("otpError", "Invalid OTP");
+            model.addAttribute("email",email);
             hasErrors = true;
         }
 
