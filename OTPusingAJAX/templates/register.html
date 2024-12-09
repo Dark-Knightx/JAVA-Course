@@ -122,7 +122,7 @@
 
             if (!response.ok) throw new Error('Failed to submit registration');
 
-            const result = await response.text();
+            const result = await "Success";
             document.getElementById('status').innerHTML = `<div class="alert alert-success">${result}</div>`;
         } catch (error) {
             console.error('Error:', error);
