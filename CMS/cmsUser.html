@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org/" lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>BOWO</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <!--Custom Styles-->
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.13.0/css/all.css">
+    <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../assets/vendor/css/slick-theme.css">
+    <link rel="stylesheet" href="../assets/vendor/css/slick.css">
+    <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+
+<body>
+<header class="HddrBg FxdHeader">
+    <nav class="navbar navbar-expand-lg">
+        <div class="container container-1200">
+            <div class="logo_header">
+                <a href="" class=""><img src="../assets/images/logo.svg" class="img-fluid" alt="osiz"></a>
+                <ul class="maintabs">
+                    <li><a href="../admin/dashboard" class="active">dashboard</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+<div class="Main-section MnuPaddTop">
+    <div class="container container-1200">
+        <div class="NeoBnkHmMain">
+            <div class="row">
+                <div class="col-sm-9 mx-auto mb-3">
+                    <div class="NeoBnnrCnt">
+                        <form action="/admin/updatecms" method="post">
+                                <textarea name="text" disabled id="d" rows="25" class="form-control" th:text="${cmsText}">
+                                </textarea>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="BnrRtimgSec">
+                <img src="../assets/images/neo-bnr-rt-img.png" alt="#" class="img-fluid d-block mx-auto" />
+            </div>
+        </div>
+    </div>
+</div>
+<script src="assets/js/jquery.min.js "></script>
+<script src="assets/js/bootstrap.bundle.min.js "></script>
+<script src="assets/vendor/js/slick.min.js "></script>
+<script src="assets/js/smooth-scroll.js "></script>
+
+</body>
+
+</html>
