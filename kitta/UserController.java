@@ -47,6 +47,22 @@ public class UserController {
         model.addAttribute("tickets", tickets);
         return "user-tickets";
     }
+    @Autowired
+private DepositHistoryRepo depositHistoryRepo;
+
+@GetMapping("/depositHistory")
+public String depositHistory(Model model) {
+    Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+    UserDetails userDetails = (UserDetails) authentication.getPrincipal();
+    String email = userDetails.getUsername();
+
+    // Fetch the last 5 deposit records sorted by depositDate (latest first)
+    List<Deposit> last5Deposits = depositHistoryRepo.findTop5ByUserEmailOrderByDepositDateDesc(email);
+
+    // Add attributes to the model
+    model.addAttribute("deposits", last5Deposits);
+    return "depositHistory"; // Name of the Thymeleaf template
+}
 
     @GetMapping("/tickets/create")
     public String showCreateTicketForm(Model model) {
