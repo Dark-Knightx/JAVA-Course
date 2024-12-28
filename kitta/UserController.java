@@ -49,7 +49,16 @@ public class UserController {
     }
     @Autowired
 private DepositHistoryRepo depositHistoryRepo;
-
+// Use this editor to write, compile and run your Java code online
+import java.util.Random;
+class Main {
+    public static void main(String[] args) {
+        String prefix = "AXIX";
+        Random random = new Random();
+        int randomNumber = 1000000 + random.nextInt(9000000);
+        System.out.println(prefix + randomNumber);
+    }
+}
 @GetMapping("/depositHistory")
 public String depositHistory(Model model) {
     Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
