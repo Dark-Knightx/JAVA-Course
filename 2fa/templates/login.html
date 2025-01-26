@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org/" lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>BOWO</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <!--Custom Styles-->
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.13.0/css/all.css">
+    <link rel="stylesheet" href="./assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./assets/vendor/css/slick-theme.css">
+    <link rel="stylesheet" href="./assets/vendor/css/slick.css">
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <style>
+        .flash-message {
+        border: 1px solid transparent;
+        border-radius: 4px;
+
+    }
+    .a{
+         position: fixed;
+        top: 0;
+        left: 0;
+    }
+        body{
+            position: relative;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+</head>
+
+<body>
+<div th:if="${Success}" class="alert alert-success flash-message a">
+    <span th:text="${Success}"></span>
+</div>
+<div th:if="${param.error}" class="alert alert-danger">
+    <p th:text="${param.error}"></p>
+</div>
+    <div class="Main-section MnuPaddTop">
+        <div class="container container-1200">
+            <div class="row">
+                <div class="col-lg-6 mx-auto mb-3 ">
+                    <div class="LogInMain">
+                        <div class="LogInSec">
+                            <div class="NeoBnnrCnt NeoLgnHdd text-center mb-5">
+                                <h6>Welcome Back...!</h6>
+                                <h2>Sign In to Your Account</h2>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-10 mx-auto">
+                                    <form class="LogForm" th:action="@{/loginPage}" method="post">
+<!--                                        <input type="hidden" name="loginType" value="user">-->
+                                        <input type="hidden" name="loginType" value="user">
+                                        <div class="form-group">
+                                            <label for="exampleInputEmail1">Email<span class="FrmLbl">*</span></label>
+                                            <input type="email" value="sivv@gmail.com" class="form-control" name="username" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="john123@gmail.com">
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Password<span class="FrmLbl">*</span></label>
+                                            <div class="input-group mb-3 PassInptGrp">
+                                                <input type="password" value="aaaaa" name="password"  class="form-control" placeholder="Enter your password" aria-label="Password1" aria-describedby="basic-addon2">
+                                                <div class="input-group-append">
+                                                    <span class="input-group-text" id="basic-addon2"><img src="assets/images/passw-icon.svg" alt="" class="img-fluid"></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="RmbrFrgtFlx pb-3">
+                                            <div class="form-group form-check mb-0 cusChck">
+                                                <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                                <label class="form-check-label" for="exampleCheck1">Remember me</label>
+                                            </div>
+                                            <div class="FrgtCnt">
+                                                <a href="#">Forgot Passsword</a>
+                                            </div>
+                                        </div>
+
+                                        <button type="submit" class="btn BtnPrimry Btn120-42 w-100 mt-4 mb-4 LgnBtn">Login</button>
+
+                                        <div class="text-center RegstLnk">
+                                            <p>Don’t have an account?<a href="/regg/reg"> Register </a></p>
+                                        </div>
+                                    </form>
+                                    <div class="FrgtCnt">
+                                        <a href="/loginPageAdmin">A login</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="/assets/js/jquery.min.js "></script>
+    <script src="/assets/js/bootstrap.bundle.min.js "></script>
+    <script src="/assets/vendor/js/slick.min.js "></script>
+    <script src="/assets/js/smooth-scroll.js "></script>
+<script>
+    // Hide flash messages after 5 seconds
+    window.onload = function() {
+        setTimeout(function() {
+            const flashMessages = document.querySelectorAll('.flash-message');
+            flashMessages.forEach(message => {
+                message.style.transition = "opacity 0.5s ease";
+                message.style.opacity = "0"; // Fade out
+                setTimeout(() => message.style.display = "none", 1000); // Hide completely after fade
+            });
+        }, 5000); // 5 seconds
+    };
+</script>
+</body>
+
+</html>

@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>BOWO</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <!--Custom Styles-->
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.13.0/css/all.css">
+    <link rel="stylesheet" href="./assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./assets/vendor/css/slick-theme.css">
+    <link rel="stylesheet" href="./assets/vendor/css/slick.css">
+    <link rel="stylesheet" href="./assets/css/style.css">
+</head>
+
+<body>
+
+    <header class="HddrBg FxdHeader">
+        <nav class="navbar navbar-expand-lg">
+            <div class="container container-1200">
+                <div class="d-flex align-items-center w-100">
+                    <div class="logo_header">
+                        <a href="" class=""><img src="assets/images/logo.svg" class="img-fluid" alt="logo" /></a>
+                    </div>
+                    <div class="userDD ml-auto">
+                        <img src="assets/images/userImg.png" class="prof" />
+                        <span>Mark Steward</span>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div class="Main-section MnuPaddTop RegstMainBg innerPgs">
+        <div class="container container-1200">
+            <div class="row">
+                <div class="col-12">
+                    <ul class="maintabs">
+                        <li><a href="./overview.html" class="active">Overview</a></li>
+                        <li><a href="./profile.html">Profile</a></li>
+                        <li><a href="./swap.html">Swap</a></li>
+                        <li><a href="./businessprofile.html">Business Profile</a></li>
+                        <li><a href="./developercontrols.html">Developer Control</a></li>
+                        <li><a href="./banking.html">Banking</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row mb-3">
+                <div class="col-lg-12">
+                    <div class="innerCard px-5 py-5 trans">
+                        <h3 class="lgHeading mb-4">Transaction History</h3>
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="tableFilterCnt d-flex align-items-center flex-wrap">
+                                    <p class="mb-0">
+                                        Showing
+                                        <select>
+                                            <option>10</option>
+                                            <option>20</option>
+                                            <option>30</option>
+                                        </select>
+                                        of 200 results
+                                    </p> 
+                                    <div class="d-flex align-items-center ml-auto">
+                                        <p class="mr-2 mb-0">Sort By</p>
+                                        <select class="">
+                                            <option>Date</option>
+                                            <option>Filter1</option>
+                                            <option>Filter2</option>
+                                            <option>Filter3</option>
+                                            <option>Filter4</option>
+                                        </select>
+                                    </div>
+                                    <div>
+                                        <input class="form-control searchInput" placeholder="Search" />
+                                    </div>
+                                </div>
+                                <div class="table-responsive mt-3">
+                                    <table class="table table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th>S.No</th>
+                                                <th>Date & Time</th>
+                                                <th>Currency</th>
+                                                <th>Amount</th>
+                                                <th>Transaction ID</th>
+                                                <th>User Name</th>
+                                                <th class="text-right">Status</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>1</td>
+                                                <td>05-05-2023  |  12:50:06</td>
+                                                <td>BOWO</td>
+                                                <td>0.12477 <span class="greyTxt">BOWO</span></td>
+                                                <td>AXIX0001245</td>
+                                                <td>Steve</td>
+                                                <td class="text-right text-success">Completed</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="tableFilterCnt d-flex align-items-center flex-wrap">
+                                    <p>Showing 1 to 10  of 200 entries</p>
+                                    <ul class="pagination ml-auto">
+                                        <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+                                        <li class="page-item"><a class="page-link active" href="#">1</a></li>
+                                        <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                        <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                        <li class="page-item"><a class="page-link" href="#">Next</a></li>
+                                    </ul> 
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="assets/js/jquery.min.js "></script>
+    <script src="assets/js/bootstrap.bundle.min.js "></script>
+    <script src="assets/vendor/js/slick.min.js "></script>
+    <script src="assets/js/smooth-scroll.js "></script>
+    <script>
+        // sidebar
+        $(".SidRitMnu").on('click', function() {
+            $('body').toggleClass('side-Open');
+        });
+    </script>
+    <script>
+        $(window).scroll(function() {
+            var scroll = $(window).scrollTop();
+
+            if (scroll >= 65) {
+                $(".FxdHeader").addClass("darkHeader");
+            } else {
+                $(".FxdHeader").removeClass("darkHeader");
+            }
+        });
+    </script>
+
+</body>
+
+</html>

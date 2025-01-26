@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org/" lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>BOWO</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <!--Custom Styles-->
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.13.0/css/all.css">
+    <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../assets/vendor/css/slick-theme.css">
+    <link rel="stylesheet" href="../assets/vendor/css/slick.css">
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <style>
+        .innerPgs .innerCard .kycLabel.verified {
+            color: #0BF4E3;
+            border-color: #0BF4E3;
+            background: rgba(66, 222, 232, 0.06);
+        }
+        .innerPgs .innerCard .kycLabel.not-verified {
+            color: #f40b0b;
+            border-color: #f40b0b;
+            background: rgba(66, 222, 232, 0.06);
+        }
+        .innerPgs .innerCard .kycLabel.pending {
+            color: #ab9326;
+            border-color: #ab9326;
+            background: rgba(66, 222, 232, 0.06);
+        }
+        .innerPgs .innerCard form input.form-control.notVerifyBorder{
+            border: 1px solid red;
+        }
+        .innerPgs .innerCard form input.form-control.verifyBorder{
+            border: 1px solid green;
+        }
+        .innerPgs .innerCard form input.form-control.pendingBorder{
+            border: 1px solid #ab9326;
+        }
+
+        .innerPgs .innerCard form textarea.form-control.notVerifyBorder{
+            border: 1px solid red;
+        }
+        .innerPgs .innerCard form textarea.form-control.verifyBorder{
+            border: 1px solid green;
+        }
+        .innerPgs .innerCard form textarea.form-control.pendingBorder{
+            border: 1px solid #ab9326;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header class="HddrBg FxdHeader">
+        <nav class="navbar navbar-expand-lg">
+            <div class="container container-1200">
+                <div class="d-flex align-items-center w-100">
+                    <div class="logo_header">
+                        <a href="#" class=""><img src="../assets/images/logo.svg" class="img-fluid" alt="logo" /></a>
+                    </div>
+                    <div class="userDD ml-auto">
+                        <img src="../assets/images/userImg.png" class="prof" />
+                        <span>Mark Steward</span>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div class="Main-section MnuPaddTop RegstMainBg innerPgs">
+        <div class="container container-1200">
+            <div class="row">
+                <div class="col-12">
+                    <ul class="maintabs">
+                        <li><a href="../user/dashboard" class="active">Overview</a></li>
+                        <li><a href="../profile.html">Profile</a></li>
+                        <li><a href="../support">Support</a></li>
+                        <li><a href="../user/businessprofile">Business Profile</a></li>
+                        <li><a href="../developercontrols.html">Developer Control</a></li>
+                        <li><a href="../banking.html">Banking</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row mb-3">
+                <div class="col-lg-12">
+                    <div class="innerCard px-5 py-5 trans">
+                        <h3 class="lgHeading mb-4">Business Profile</h3>
+                        <ul class="nav nav-tabs pageTabs mb-4">
+                            <li class="nav-item">
+                              <a class="nav-link active" data-toggle="tab" href="#home">Google Authentication</a>
+                            </li>
+                            <li class="nav-item">
+                              <a class="nav-link" data-toggle="tab" href="#menu1">Change Password</a>
+                            </li>
+                            <li class="nav-item">
+                              <a class="nav-link" data-toggle="tab" href="#menu2">KYC</a>
+                            </li>
+                        </ul>
+                        <div class="tab-content">
+                            <div class="tab-pane container active" id="menu2">
+                                <div class="d-flex flex-wrap align-items-center mb-4">
+                                    <h3 class="mdHeading mr-2">KYC Verification</h3>
+                                    <span class="kycLabel"
+                                          th:classappend="${customer.kycVerification == 'Verified' ? 'verified' : (customer.kycVerification == 'Rejected' ? 'not-verified' : 'pending')}"
+                                          th:text="${customer.kycVerification}"></span>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-8">
+                                        <form>
+                                            <div class="row">
+                                                <div class="col-lg-6">
+                                                    <div class="form-group">
+                                                        <label class="formLabel">Business Name</label>
+                                                        <input type="text" th:classappend="${customer.brandNameVerification == 'Accepted' ? 'verifyBorder' : (customer.brandNameVerification == 'Rejected' ? 'notVerifyBorder' : 'pendingBorder')}" class="form-control" th:value="${customer.brandName}" />
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-6">
+                                                    <div class="form-group">
+                                                        <label class="formLabel">Business ID</label>
+                                                        <input type="text" class="form-control" th:classappend="${customer.businessIdVerification == 'Accepted' ? 'verifyBorder' : (customer.businessIdVerification == 'Rejected' ? 'notVerifyBorder' : 'pendingBorder')}" th:value="${customer.businessId}" />
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-6">
+                                                    <div class="form-group">
+                                                        <label class="formLabel">Website</label>
+                                                        <input type="text" class="form-control" th:classappend="${customer.categoryVerification == 'Accepted' ? 'verifyBorder' : (customer.categoryVerification == 'Rejected' ? 'notVerifyBorder' : 'pendingBorder')}" th:value="${customer.category}" />
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-6">
+                                                    <div class="form-group">
+                                                        <label class="formLabel">Registration Number</label>
+                                                        <input type="text" class="form-control" th:classappend="${customer.descriptionVerification == 'Accepted' ? 'verifyBorder' : (customer.descriptionVerification == 'Rejected' ? 'notVerifyBorder' : 'pendingBorder')}" th:value="${customer.description}"  />
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-12">
+                                                <textarea
+                                                        class=""
+                                                        th:attr="class=${customer.descriptionVerification == 'Accepted' ? 'form-control verifyBorder' : (customer.descriptionVerification == 'Rejected' ? 'form-control notVerifyBorder' : 'form-control pendingBorder')}"
+                                                        th:text="${customer.description}">
+                                                </textarea>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <img th:src="@{'/user/' + ${customer.id}}" class="img-fluid img-thumbnail" alt="Uploaded Image" style="max-height: 300px;" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="../assets/js/jquery.min.js "></script>
+    <script src="../assets/js/bootstrap.bundle.min.js "></script>
+    <script src="../assets/vendor/js/slick.min.js "></script>
+    <script src="../assets/js/smooth-scroll.js "></script>
+    <script>
+        // sidebar
+        $(".SidRitMnu").on('click', function() {
+            $('body').toggleClass('side-Open');
+        });
+    </script>
+        <script>
+            // Select all elements with the 'gvgv' class
+            const elements = document.querySelectorAll('.verifyBorder');
+
+            // Add the 'disabled' attribute to them
+            elements.forEach(element => {
+                element.setAttribute('disabled', true);
+            });
+        </script>
+    <script>
+        $(window).scroll(function() {
+            var scroll = $(window).scrollTop();
+
+            if (scroll >= 65) {
+                $(".FxdHeader").addClass("darkHeader");
+            } else {
+                $(".FxdHeader").removeClass("darkHeader");
+            }
+        });
+    </script>
+
+</body>
+
+</html>

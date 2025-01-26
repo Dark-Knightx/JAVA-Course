@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Answer Ticket</title>
+</head>
+<body>
+<h1>Answer Ticket</h1>
+<form th:action="@{'/admin/tickets/' + ${ticket.id} + '/answer'}" method="post">
+  <label for="title">Title:</label>
+  <span th:text="${ticket.title}" id="title"></span>
+  <br/>
+  <label for="description">Description:</label>
+  <p th:text="${ticket.description}" id="description"></p>
+  <br/>
+  <label for="answer">Answer:</label>
+  <textarea id="answer" name="answer" required></textarea>
+  <br/>
+  <button type="submit">Submit Answer</button>
+</form>
+</body>
+</html>

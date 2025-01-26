@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Enable 2FA</title>
+</head>
+<body>
+<h1>Enable 2FA</h1>
+
+<div th:if="${qrCode != null}">
+    <p>Scan this QR code with your 2FA app (e.g., Google Authenticator):</p>
+    <img th:src="${qrCode}" alt="QR Code" />
+</div>
+
+<form th:action="@{/admin/verify-2fa}" method="post">
+    <label for="code">Enter the 6-digit code from your app:</label>
+    <input type="text" id="code" name="code" required />
+    <button type="submit">Verify Code</button>
+</form>
+
+<div th:if="${error != null}">
+    <p th:text="${error}" style="color: red;"></p>
+</div>
+</body>
+</html>

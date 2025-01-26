@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org/" lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>BOWO</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <!--Custom Styles-->
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.13.0/css/all.css">
+    <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../assets/vendor/css/slick-theme.css">
+    <link rel="stylesheet" href="../assets/vendor/css/slick.css">
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <style>
+        .circle {
+            height: 15px;
+            width: 15px;
+            border-radius: 15px;
+            background-color: black;
+            position: fixed;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+            z-index: 99999999; /* so that it stays on top of all other elements */
+            box-shadow: 1px 1px 15px rgb(145, 145, 201);
+        }
+        body{
+        position: relative;
+            cursor: none;
+        }
+        body, a, button, input, select, textarea {
+            cursor: none !important; /* Hides the cursor globally */
+        }
+        .alert{
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 9999;
+        }
+    </style>
+</head>
+<body class="bodyy">
+<div class="circle"></div>
+<div class="circle"></div>
+<div class="circle"></div>
+<div class="circle"></div>
+<div class="circle"></div>
+<div class="circle"></div>
+<div class="circle"></div>
+<div class="circle"></div>
+<div class="circle"></div>
+<div class="circle"></div>
+<div class="circle"></div>
+<div class="circle"></div>
+<div class="circle"></div>
+<div class="circle"></div>
+<div class="circle"></div>
+<div class="circle"></div>
+<div class="circle"></div>
+<div class="circle"></div>
+<div class="circle"></div>
+<div class="circle"></div>
+<div class="circle"></div>
+<div class="circle"></div>
+<div class="circle"></div>
+<div class="circle"></div>
+<div class="circle"></div>
+<div class="circle"></div>
+<div class="circle"></div>
+<div class="circle"></div>
+<div class="circle"></div>
+<div class="circle"></div>
+<div class="circle"></div>
+<div th:if="${NoU}" class="alert alert-success flash-message">
+    <span th:text="${NoU}"></span>
+</div>
+<header class="HddrBg FxdHeader">
+    <nav class="navbar navbar-expand-lg">
+        <div class="container container-1200">
+            <div class="d-flex align-items-center w-100">
+                <div class="logo_header">
+                    <a href="" class=""><img src="../assets/images/logo.svg" class="img-fluid" alt="logo" /></a>
+                </div>
+                <div class="userDD ml-auto">
+                    <img src="../assets/images/userImg.png" class="prof" />
+                    <span>Mark Steward</span>
+                    <form action="/admin/enable-2fa" method="post">
+                        <button type="submit" class="btn btn-info">Enable 2FA</button>
+                    </form>
+<!--                    <form action="/admin/disable-2fa" method="post">-->
+<!--                        <button type="submit" class="btn btn-dark">Disable 2FA</button>-->
+<!--                    </form>-->
+                    <form action="/logout" method="post" class="logout-btn">
+                        <button type="submit" class="btn btn-dark">Logout</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </nav>
+</header>
+<div class="Main-section MnuPaddTop RegstMainBg innerPgs">
+    <div class="container container-1200">
+        <div class="row">
+            <div class="col-12">
+                <ul class="maintabs">
+                    <li><a href="../admin/overview" class="active">Overview</a></li>
+                    <li><a href="/admin/cms">Profile</a></li>
+                    <li><a href="../admin/unverified-customers">unverified customers</a></li>
+                    <li><a href="./businessprofile.html">Business Profile</a></li>
+                    <li><a href="./developercontrols.html">Developer Control</a></li>
+                    <li><a href="./banking.html">Banking</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="row mb-3">
+            <div class="col-lg-9">
+                <div class="innerCard">
+                    <div class="row">
+                        <div class="col-lg-8">
+                            <h5>Neo Banking</h5>
+                            <h3 class="xlHeading">The Future of Digital <br />Payments</h3>
+                            <p>Lorem ipsum dolor sit amet consectetur. At a elit tellus molestie hac. Sit aenean lacus.</p>
+                        </div>
+                        <div class="col-lg-4">
+                            <img src="../assets/images/overviewImg.png" class="img-fluid" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3">
+                <div class="innerCard">
+                    <div class="d-flex flex-column">
+                        <div class="d-flex justify-content-center w-100 mb-2"><img src="assets/images/userImg.png" class="profile" /></div>
+                        <h3 class="text-center profileName mb-2">Mark Steward</h3>
+                        <p class="profId text-center">@Mark45_ST</p>
+                        <span class="kycLabel verified mx-auto">KYC Verified</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row mb-3">
+            <div class="col-lg-7">
+                <div class="innerCard">
+                    <h3 class="mdHeading mb-3">Current Balance</h3>
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="darkBg p-3 py-4">
+                                <h3 class="valueCnt">120.24578 <span class="greyTxt">BOWO</span></h3>
+                                <p class="mb-0">Token Balance</p>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="darkBg p-3 py-4">
+                                <h3 class="valueCnt">01421.012 <span class="greyTxt">USDT</span></h3>
+                                <div class="d-flex align-items-center">
+                                    <p class="mb-0">Fiat Balance</p>
+                                    <a class="btn greenBtn ml-auto">Withdraw</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-5">
+                <div class="innerCard">
+                    <h3 class="mdHeading mb-3">Payment Details</h3>
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="p-3 py-4">
+                                <h3 class="valueCnt">120.24578</h3>
+                                <p class="mb-0">Payment Volume</p>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="p-3 py-4">
+                                <h3 class="valueCnt">120</h3>
+                                <p class="mb-0">Payment Counts</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <div class="innerCard">
+                    <div class="d-flex align-items-center">
+                        <h3 class="mdHeading mb-3">Recent Transaction</h3>
+                        <div class="d-flex ml-auto align-items-center">
+                            <p class="mr-2 mb-0">Sort By</p>
+                            <select class="ml-auto">
+                                <option>Date</option>
+                                <option>Filter1</option>
+                                <option>Filter2</option>
+                                <option>Filter3</option>
+                                <option>Filter4</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="table-responsive mt-3">
+                        <table class="table table-hover">
+                            <thead>
+                            <tr>
+                                <th>S.No</th>
+                                <th>Date & Time</th>
+                                <th>Currency</th>
+                                <th>Amount</th>
+                                <th>Transaction ID</th>
+                                <th>User Name</th>
+                                <th class="text-right">Status</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>05-05-2023  |  12:50:06</td>
+                                <td>BOWO</td>
+                                <td>0.12477 <span class="greyTxt">BOWO</span></td>
+                                <td>AXIX0001245</td>
+                                <td>Steve</td>
+                                <td class="text-right text-success">Completed</td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>05-05-2023  |  12:50:06</td>
+                                <td>BOWO</td>
+                                <td>0.12477 <span class="greyTxt">BOWO</span></td>
+                                <td>AXIX0001245</td>
+                                <td>Marchel</td>
+                                <td class="text-right text-warning">Pending</td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>05-05-2023  |  12:50:06</td>
+                                <td>BOWO</td>
+                                <td>0.12477 <span class="greyTxt">BOWO</span></td>
+                                <td>AXIX0001245</td>
+                                <td>Marchel</td>
+                                <td class="text-right text-success">Completed</td>
+                            </tr>
+                            <tr>
+                                <td>4</td>
+                                <td>05-05-2023  |  12:50:06</td>
+                                <td>BOWO</td>
+                                <td>0.12477 <span class="greyTxt">BOWO</span></td>
+                                <td>AXIX0001245</td>
+                                <td>Marchel</td>
+                                <td class="text-right text-success">Completed</td>
+                            </tr>
+                            <tr>
+                                <td>4</td>
+                                <td>05-05-2023  |  12:50:06</td>
+                                <td>BOWO</td>
+                                <td>0.12477 <span class="greyTxt">BOWO</span></td>
+                                <td>AXIX0001245</td>
+                                <td>Marchel</td>
+                                <td class="text-right text-success">Completed</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="../assets/js/jquery.min.js "></script>
+<script src="../assets/js/bootstrap.bundle.min.js "></script>
+<script src="../assets/vendor/js/slick.min.js "></script>
+<script src="../assets/js/smooth-scroll.js "></script>
+<script>
+    // sidebar
+    $(".SidRitMnu").on('click', function() {
+        $('body').toggleClass('side-Open');
+    });
+</script>
+<script>
+    // Hide flash messages after 5 seconds
+    window.onload = function() {
+        setTimeout(function() {
+            const flashMessages = document.querySelectorAll('.flash-message');
+            flashMessages.forEach(message => {
+                message.style.transition = "opacity .5s ease";
+                message.style.opacity = "0"; // Fade out
+                setTimeout(() => message.style.display = "none", 1000); // Hide completely after fade
+            });
+        }, 3000); // 5 seconds
+    };
+</script>
+<script>
+    const coords = { x: 0, y: 0 };
+    const circles = document.querySelectorAll(".circle");
+
+    const colors = [
+        '#0BF4E3',
+        '#0BF4E3',
+        '#0BF4E3',
+        '#0BF4E3',
+        '#0BF4E3',
+        '#0BF4E3',
+        '#0BF4E3',
+        '#0BF4E3',
+        '#0BF4E3',
+        '#0BF4E3',
+        '#0BF4E3',
+        '#0BF4E3',
+        '#0BF4E3',
+        '#0BF4E3',
+        '#0BF4E3',
+        '#0BF4E3',
+        '#0BF4E3',
+        '#0BF4E3',
+        '#0BF4E3',
+        '#0BF4E3',
+        '#0BF4E3',
+        '#0BF4E3',
+        '#0BF4E3',
+        '#0BF4E3',
+        '#0BF4E3',
+        '#0BF4E3',
+        '#0BF4E3',
+        '#0BF4E3',
+        '#0BF4E3',
+        '#0BF4E3',
+        '#0BF4E3',
+        '#0BF4E3'
+    ];
+
+    circles.forEach(function (circle, index) {
+    circle.x = 0;
+    circle.y = 0;
+    circle.style.backgroundColor = colors[index % colors.length];
+    });
+
+    window.addEventListener("mousemove", function(e){
+    coords.x = e.clientX;
+    coords.y = e.clientY;
+
+    });
+
+    function animateCircles() {
+
+    let x = coords.x;
+    let y = coords.y;
+
+    circles.forEach(function (circle, index) {
+        circle.style.left = x - 12 + "px";
+        circle.style.top = y - 12 + "px";
+
+        circle.style.scale = (circles.length - index) / circles.length;
+
+        circle.x = x;
+        circle.y = y;
+
+        const nextCircle = circles[index + 1] || circles[0];
+        x += (nextCircle.x - x) * 0.3;
+        y += (nextCircle.y - y) * 0.3;
+    });
+
+    requestAnimationFrame(animateCircles);
+    }
+
+    animateCircles();
+</script>
+<script>
+    $(window).scroll(function() {
+        var scroll = $(window).scrollTop();
+
+        if (scroll >= 65) {
+            $(".FxdHeader").addClass("darkHeader");
+        } else {
+            $(".FxdHeader").removeClass("darkHeader");
+        }
+    });
+
+</script>
+<!--<script type="text/javascript">-->
+<!--    window.history.forward();-->
+<!--    function noBack()-->
+<!--    {-->
+<!--        window.history.forward();-->
+<!--    }-->
+<!--</script>-->
+</body>
+
+</html>

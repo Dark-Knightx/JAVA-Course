@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>BOWO</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <!--Custom Styles-->
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.13.0/css/all.css">
+    <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../assets/vendor/css/slick-theme.css">
+    <link rel="stylesheet" href="../assets/vendor/css/slick.css">
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/support.css">
+</head>
+
+<body>
+
+    <header class="HddrBg FxdHeader">
+        <nav class="navbar navbar-expand-lg">
+            <div class="container container-1200">
+                <div class="d-flex align-items-center w-100">
+                    <div class="logo_header">
+                        <a href="" class=""><img src="../assets/images/logo.svg" class="img-fluid" alt="logo" /></a>
+                    </div>
+                    <div class="userDD ml-auto">
+                        <img src="../assets/images/userImg.png" class="prof" />
+                        <span>Mark Steward</span>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div class="Main-section MnuPaddTop RegstMainBg innerPgs">
+        <div class="container container-1200">
+            <div class="row mb-3">
+                <div class="col-lg-12">
+                    <div class="innerCard px-5 py-5 trans">
+                        <h3 class="lgHeading mb-4">Support</h3>
+                        <div class="BluBg0b0 SwpFrMainSec StkFrmMain">
+                            <div class="SupprtTbbSec">
+                                <nav class="SuprtTbb">
+                                    <ul class="nav nav-tabs maintabs" id="nav-tab" role="tablist">
+                                        <li><a class="nav-item nav-link active" id="supprt-tab" data-toggle="tab" href="#supprt1" role="tab" aria-controls="TnsStk1" aria-selected="true">Create Ticket</a></li>
+                                        <li><a class="nav-item nav-link" id="supprt1-tab" data-toggle="tab" href="#supprt2" role="tab" aria-controls="TnsStk2" aria-selected="false">View Ticket</a></li>
+                                    </ul>
+                                </nav>
+                                <div class="tab-content" id="nav-tabContent">
+                                    <div class="tab-pane fade show active" id="supprt1" role="tabpanel" aria-labelledby="supprt-tab">
+                                        <form th:action="@{/user/createTicket}" class="SupprtFrmMain" th:object="${ticket}" method="post">
+                                            <div class="row">
+                                                <div class="col-lg-6">
+                                                    <div class="form-group ">
+                                                        <label for="inputEmail4" class="FrmLbl">Email<span>*</span></label>
+                                                        <input type="email" class="form-control pl-4"  th:field="*{email}"  id="inputEmail4" placeholder="Enter Your Email Address">
+                                                    </div>
+                                                    <div class="form-group FrmSlect">
+                                                        <label for="inputSlct" class="FrmLbl">Category<span>*</span></label>
+                                                        <select id="inputSlct" class="form-control"  th:field="*{title}">
+                                                            <option th:value="1">Hello</option>
+                                                            <option th:value="2">Hello2</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="form-group ">
+                                                        <label for="input2" class="FrmLbl">Subject<span>*</span></label>
+                                                        <input type="email" class="form-control pl-4"  th:field="*{subject}" id="input2" placeholder="Enter  subject">
+                                                    </div>
+                                                    <div class="form-group ">
+                                                        <label for="exampleFormControlTextarea111" class="FrmLbl">Comments<span>*</span></label>
+                                                        <textarea class="form-control" th:field="*{description}" id="exampleFormControlTextarea111" rows="5"></textarea>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-6">
+                                                    <div class="form-group ">
+                                                        <label for="imgInp" class="FrmLbl">Add Attachment</label>
+                                                        <div class="uploadFile">
+                                                            <div class="uploadFileFlx">
+                                                                <div class="fileCnt">
+                                                                    <p>Select or drop image here</p>
+                                                                    <span>Max file size is 100Kb</span>
+                                                                </div>
+                                                                <div class="fileUpldIcon">
+                                                                    <img src="../assets/images/file-upload-icon.svg" alt="" class="img-fluid">
+                                                                </div>
+                                                            </div>
+                                                            <div>
+                                                                <input accept="image/*" class="inputfile form-control" name="file" type='file' id="imgInp" />
+                                                                <img id="blah" src="#" class="img-fluid" onerror="this.style.display='none';"/>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="text-center SwpMainBtn mt-3 mt-md-5">
+                                                <button type="submit" class="btn BtnPrimry Btn160-42">Submit</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <div class="tab-pane fade" id="supprt2" role="tabpanel" aria-labelledby="supprt1-tab">
+                                        <div class="row">
+                                            <div class="col-xl-10 col-lg-10 mx-auto">
+                                                <div id="ticketAccordion">
+                                                    <div th:each="ticket, iterStat : ${tickets}" class="card">
+                                                        <div class="card-header" th:id="'faqhead' + ${iterStat.index}">
+                                                            <a href="#" class="btn btn-header-link headBox"
+                                                               th:data-target="'#faq' + ${iterStat.index}"
+                                                               data-toggle="collapse"
+                                                               th:attr="aria-controls='faq' + ${iterStat.index}"
+                                                               th:attrappend="aria-expanded=${iterStat.index == 0}">
+                                                                <span th:text="'Ticket ID ' + ${ticket.id}"></span>
+                                                                <span class="TcktSts" th:text="${ticket.status}">
+                                                                    <img src="../assets/images/vw-tckt-arrw.svg" alt="" class="img-fluid">
+                                                                </span>
+                                                            </a>
+                                                        </div>
+                                                        <div th:id="'faq' + ${iterStat.index}"
+                                                             class="collapse"
+                                                             th:classappend="${iterStat.index == 0} ? 'show'"
+                                                             th:attr="aria-labelledby='faqhead' + ${iterStat.index}"
+                                                             data-parent="#ticketAccordion">
+                                                            <div class="card-body">
+                                                                <div class="VwTkctCnt">
+                                                                    <h4 th:text="${ticket.title}"></h4>
+                                                                    <p th:text="${ticket.description}"></p>
+                                                                </div>
+                                                                <div class="TcktInpt mt-3">
+                                                                    <form action="/user/removeTicket" method="post">
+                                                                        <input type="hidden" name="ticketId" th:value="${ticket.id}">
+                                                                        <p><strong>Answer:</strong>
+                                                                        <textarea type="text" readonly class="form-control" th:text="${ticket.answer}" rows="3" name="comment" placeholder="Waiting for Reply.." aria-label="Type here..."></textarea>
+                                                                        <div class="input-group mb-3">
+
+
+<!--                                                                            <input type="text" readonly class="form-control" th:value="${ticket.answer}" name="comment" placeholder="Type here..." aria-label="Type here...">-->
+                                                                            <div class="input-group-append">
+                                                                                <button type="submit" class="btn btn-dark">Remove Ticket
+                                                                                </button>
+                                                                            </div>
+                                                                        </div>
+                                                                    </form>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="../assets/js/jquery.min.js "></script>
+    <script src="../assets/js/bootstrap.bundle.min.js "></script>
+    <script src="../assets/vendor/js/slick.min.js "></script>
+    <script src="../assets/js/smooth-scroll.js "></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            const tab = urlParams.get('tab');
+
+            if (tab === 'view') {
+                // Activate the "View Ticket" tab
+                document.querySelector('#supprt1-tab').classList.remove('active');
+                document.querySelector('#supprt-tab').classList.remove('active');
+                document.querySelector('#supprt2').classList.add('show', 'active');
+                document.querySelector('#supprt1').classList.remove('show', 'active');
+                document.querySelector('#supprt1-tab').setAttribute('aria-selected', 'false');
+                document.querySelector('#supprt-tab').setAttribute('aria-selected', 'true');
+            }
+        });
+    </script>
+
+    <script>
+        // sidebar
+        $(".SidRitMnu").on('click', function() {
+            $('body').toggleClass('side-Open');
+        });
+
+                document.addEventListener('DOMContentLoaded', () => {
+        const imgInp = document.getElementById('imgInp');
+        const blah = document.getElementById('blah');
+
+        imgInp.addEventListener('change', (evt) => {
+            const [file] = imgInp.files;
+            if (file) {
+                blah.style.display = 'block'; // Ensure the image is visible
+                blah.src = URL.createObjectURL(file);
+            }
+            });
+        });
+
+          imgInp.onchange = evt => {
+        const [file] = imgInp.files
+        if (file) {
+            blah.src = URL.createObjectURL(file)
+        }
+        }
+    </script>
+    <script>
+        $(window).scroll(function() {
+            var scroll = $(window).scrollTop();
+
+            if (scroll >= 65) {
+                $(".FxdHeader").addClass("darkHeader");
+            } else {
+                $(".FxdHeader").removeClass("darkHeader");
+            }
+        });
+    </script>
+
+</body>
+
+</html>

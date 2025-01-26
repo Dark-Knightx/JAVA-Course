@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org/" lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>BOWO</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <!--Custom Styles-->
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.13.0/css/all.css">
+    <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/vendor/css/slick-theme.css">
+    <link rel="stylesheet" href="/assets/vendor/css/slick.css">
+    <link rel="stylesheet" href="/assets/css/style.css">
+</head>
+
+<body>
+<div th:if="${regg}" class="alert alert-danger">
+    <span th:text="${regg}"></span>
+</div>
+<div th:if="${otpError}" class="alert alert-danger">
+    <span th:text="${otpError}"></span>
+</div>
+<div th:if="${otpError2}" class="alert alert-danger">
+    <span th:text="${otpError2}"></span>
+</div>
+<div class="Main-section MnuPaddTop RegstMainBg">
+    <div class="container container-1200">
+        <div class="row align-items-center">
+            <div class="col-lg-4 mb-3 ">
+                <div class="LogInMain RegistrMain">
+                    <div class="LogInSec">
+                        <div class="NeoBnnrCnt NeoLgnHdd  mb-4">
+                            <h6>Few More Steps...!</h6>
+                            <h2>Sign Up Now to Start Your Digital Payments</h2>
+                        </div>
+                        <div class=" RegstLnk">
+                            <p>Already have an account? <a href="../../../../../../4_BOWO_Neo_Banking/Bowo_Banking_HTML/login.html">  Login </a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-8">
+                <div class="RegStpTbb mb-4">
+                    <ul class="nav nav-tabs" id="myTab" role="tablist">
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link active" id="LogTbb-tab" data-toggle="tab" data-target="#LogTbb1" type="button" role="tab" aria-controls="LogTbb1" aria-selected="true">Step 1</button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="LogTbb2-tab" data-toggle="tab" data-target="#LogTbb2" type="button" role="tab" aria-controls="LogTbb2" aria-selected="false">Step 2</button>
+                        </li>
+                    </ul>
+                </div>
+                <div class="tab-content" id="myTabContent">
+                    <div class="tab-pane fade show active" id="LogTbb1" role="tabpanel" aria-labelledby="LogTbb-tab">
+                        <form id="step1Form" action="/regg/verifyOtp" method="post" class="LogForm">
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <div class="form-group mb-4">
+                                        <input type="hidden" name="email" th:value="${email}">
+                                        <label for="otp" class="FrmLbl">Enter OTP<span>*</span></label>
+                                        <input type="text" class="form-control" id="otp" name="otp">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 pl-0">
+                                <button type="submit" class="btn BtnPrimry Btn120-42 w-100 mt-4 mb-4 LgnBtn">Verify</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="/assets/js/jquery.min.js "></script>
+<script src="/assets/js/bootstrap.bundle.min.js "></script>
+<script src="/assets/vendor/js/slick.min.js "></script>
+<script src="/assets/js/smooth-scroll.js "></script>
+
+</body>
+
+</html>
